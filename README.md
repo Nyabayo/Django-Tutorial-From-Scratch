@@ -8,6 +8,48 @@ Django is a high-level Python web framework that encourages rapid development an
 
 3. **Template**: Templates are files that allow you to separate the design of your webpage from the Python code that powers it. They describe how the data should be presented and are written in HTML but include Django Template Language (DTL), which provides filters and tags to inject data from the view into the HTML file.
 
+Activating the Virtual Environment
+Since you are using PowerShell on Windows, here’s how you can activate the virtual environment:
+
+Navigate to Your Project Directory:
+Make sure you're in the directory where your virtual environment is located (C:\Users\ERNEST\OneDrive\Documents\Django Projects).
+Activate the Virtual Environment:
+In PowerShell, use the following command:
+powershell
+Copy code
+.\myworld\Scripts\Activate
+This command will activate the virtual environment. You should see (myworld) prefixed to your PowerShell prompt, indicating that the virtual environment is active.Note: If you encounter an error related to script execution policies, you may need to adjust them. You can allow script execution for the current session by running:
+powershell
+Copy code
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+Then try activating the virtual environment again.
+Using the Virtual Environment
+Once the virtual environment is activated:
+
+Install Packages: You can install packages using pip, and they will be installed within this virtual environment, not affecting the global Python environment.
+powershell
+Copy code
+pip install django
+Run Python Code: Any Python code you run from this shell will use the Python interpreter and libraries available in the virtual environment.
+Deactivating the Virtual Environment
+When you are done working in the virtual environment and want to switch back to the global Python environment, you can deactivate it by running:
+
+powershell
+Copy code
+deactivate
+This command will revert to using the system’s global Python settings.
+
+Understanding the PATH Variable
+The output from $env:PATH shows the current PATH environment variable, which includes various system and application paths but not the path to the Scripts directory of your virtual environment (myworld). This is expected because the virtual environment modifies the PATH only when it is active, and it does so only within the context of the currently running shell session. Therefore, you do not see changes in the PATH permanently listed in the environment variable.
+
+
+
+
+
+
+
+
+
 ### Setting Up a Django Project
 
 Here’s a step-by-step guide to set up a Django project:
