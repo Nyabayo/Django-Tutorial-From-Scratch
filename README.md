@@ -164,3 +164,139 @@ python manage.py runserver
 Visit `http://127.0.0.1:8000/students/` to see the output of your view, which, to begin with, will be empty until you add data into the database.
 
 By following these steps, you will have a basic understanding of how Django's MVT architecture works in practice, with a real example of a model, a view that fetches data from that model, and basic URL routing. As you become more comfortable, you can start experimenting with templates to render HTML pages instead of just sending plain text responses.
+
+
+Let's go through a simplified, step-by-step tutorial to get you started with Django, a powerful Python web framework used for building web applications. This guide is tailored for beginners and assumes you are starting with no prior knowledge of Django.
+
+### Step 1: Install Python
+
+Before you can work with Django, you must have Python installed.
+
+1. **Download Python**:
+   - Visit the [official Python website](https://www.python.org/downloads/).
+   - Download the latest version of Python for your operating system (Windows, MacOS, or Unix/Linux).
+
+2. **Install Python**:
+   - Run the downloaded installer.
+   - **Ensure to check "Add Python 3.x to PATH"** at the start of the installation process.
+   - Follow through the installer steps and complete the installation.
+
+### Step 2: Set Up a Virtual Environment
+
+Using a virtual environment allows you to manage Python packages for different projects separately.
+
+1. **Open your Command Prompt (Windows) or Terminal (MacOS/Unix)**:
+   - Navigate to the directory where you want to create your Django project.
+   
+2. **Create the Virtual Environment**:
+   - On Windows, run:
+     ```bash
+     py -m venv myworld
+     ```
+   - On MacOS or Unix, run:
+     ```bash
+     python3 -m venv myworld
+     ```
+
+   This creates a new directory called `myworld` which contains your virtual environment.
+
+3. **Activate the Virtual Environment**:
+   - On Windows, run:
+     ```bash
+     myworld\Scripts\activate
+     ```
+   - On MacOS or Unix, run:
+     ```bash
+     source myworld/bin/activate
+     ```
+   You will know that your virtual environment is activated because the prompt in your command line will change to show the name of your environment (`myworld`).
+
+### Step 3: Install Django
+
+With your virtual environment activated, you can install Django.
+
+- **Install Django**:
+  ```bash
+  pip install django
+  ```
+
+### Step 4: Create a Django Project
+
+1. **Create a New Django Project**:
+   - In your command line, with the virtual environment activated, run:
+     ```bash
+     django-admin startproject mysite
+     ```
+   - This command creates a new directory called `mysite` with the necessary Django structure inside.
+
+2. **Navigate to Your Project Directory**:
+   - Change to your project directory:
+     ```bash
+     cd mysite
+     ```
+
+### Step 5: Run the Development Server
+
+Check if everything is set up correctly by running the Django development server.
+
+- **Run the Server**:
+  ```bash
+  python manage.py runserver
+  ```
+- You can now access your site by going to http://127.0.0.1:8000/ in your web browser. You should see a default Django success page.
+
+### Step 6: Create a Simple Web Page
+
+Let's create a simple web page to display a message.
+
+1. **Create an App**:
+   - Run:
+     ```bash
+     python manage.py startapp webapp
+     ```
+
+2. **Create a View**:
+   - Open `webapp/views.py` and add:
+     ```python
+     from django.http import HttpResponse
+
+     def home(request):
+         return HttpResponse('Hello, welcome to my Django web app!')
+     ```
+
+3. **Configure URLs**:
+   - In the `webapp` directory, create a file named `urls.py` and add:
+     ```python
+     from django.urls import path
+     from .views import home
+
+     urlpatterns = [
+         path('', home, name='home'),
+     ]
+     ```
+   - Include the `webapp` URLs in the main project by modifying `mysite/urls.py`:
+     ```python
+     from django.contrib import admin
+     from django.urls import include, path
+
+     urlpatterns = [
+         path('admin/', admin.site.urls),
+         path('', include('webapp.urls')),
+     ]
+     ```
+
+4. **Run the Server Again**:
+   - Restart the server:
+     ```bash
+     python manage.py runserver
+     ```
+   - Go to http://127.0.0.1:8000/ to see "Hello, welcome to my Django web app!"
+
+### Step 7: Deactivate the Virtual Environment
+
+- When you're done, you can deactivate the virtual environment by simply typing:
+  ```bash
+  deactivate
+  ```
+
+This guide should help you understand the basics of setting up and creating a simple Django project. Feel free to explore more complex functionalities as you become more comfortable with Django.
